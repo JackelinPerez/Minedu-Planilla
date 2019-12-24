@@ -1,40 +1,35 @@
 import React from 'react';
-import {Form, Button} from 'react-bootstrap';
 import './App.css';
+/*Router */
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+
+
+import Resultados from './components/tableResult';
+import Devengados from './components/accrued';
+import Hello from './components/home';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state={formDNI:0}
-  }
-
-  myChangeHandler = (event) => {
-    let id = event.target.id;
-    let val = event.target.value;
-    let err = '';
-    this.setState({errormessage: err});
-    this.setState({[id]: val});
-  }
-
-  handleSubmit = () =>{
-
-    if(this.state.formDNI.length<7 || this.state.formDNI  === 0){
-      alert('El numero de DNI no puede ser menor a 7 digitos, vuelve a intentarlo')
-    }
-  }
-
   render() {
     return (
-      <Form onSubmit={this.handleSubmit} onChange={this.myChangeHandler} >
-        <Form.Group controlId="formDNI" >
-          <Form.Control type="number" placeholder="Ingrese su DNI" />
-        </Form.Group>
-        <Button variant="danger" type="submit">
-          Submit
-        </Button>
-      </Form>
-    )
+      <Router>
+      <div>
+        <Switch>
+          <Route exact path="/" component={Hello}>
+          </Route>           
+          <Route path="/resultados" component={Resultados}>
+          </Route>
+          <Route path="/devengados" component={Devengados} >
+          </Route>
+        </Switch>
+      </div>
+    </Router>
+    );
   }
 }
+
 
 export default App;

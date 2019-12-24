@@ -1,0 +1,24 @@
+{
+  "name": "minedu-planilla",
+  "version": "1.0.0",
+  "description": "template devengados planilla docentes",
+  "main": "index.js",
+  "dependencies": {
+    "react-bootstrap": "^1.0.0-beta.16",
+    "bootstrap": "^4.4.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JackelinPerez/Minedu-Planilla.git"
+  },
+  "author": "jackelinPerez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JackelinPerez/Minedu-Planilla/issues"
+  },
+  "homepage": "https://github.com/JackelinPerez/Minedu-Planilla#readme"
+}
