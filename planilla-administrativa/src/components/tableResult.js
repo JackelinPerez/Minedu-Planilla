@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 import {Form, Button, Nav, Table, Alert} from 'react-bootstrap';
 import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
 import dataJson from '../data/planilla.json'
-import dataCodTable from '../data/CodPlanilla.json'
+import dataCodTable from '../data/Cod_Planilla.json'
 import PropTypes from 'prop-types';
 
 const getCodRules = (codRules) =>{
@@ -37,7 +37,7 @@ class Resultados extends React.Component {
       <div >
          <Alert variant="info">PLANILLA MINEDU</Alert>
          <BootstrapTable data={userPlanilla} striped hover>
-            <TableHeaderColumn isKey dataField='code' >Descripcion</TableHeaderColumn>
+            <TableHeaderColumn isKey dataField='code'>Descripcion</TableHeaderColumn>
             <TableHeaderColumn dataField='value' >Valor</TableHeaderColumn>
          </BootstrapTable>
          <Link to="/"><Button variant="outline-info">Principal</Button></Link>

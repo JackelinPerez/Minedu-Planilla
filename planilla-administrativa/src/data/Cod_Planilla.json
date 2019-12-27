@@ -46,4 +46,10 @@
     "COD_046": "REDONDEO",
     "COD_047": "DESCT.X PREST. DE SALUD",
     "COD_048": "Total general",
-    "COD_049": "MONTO" } ]
+    "COD_049": "MONTO",
+    "COD_050": "Sexo",
+    "COD_051": "FECHA DE INICIO DE PENSIÓN",
+    "COD_052": "FECHA DE NACIMIENTO",
+    "COD_053": "TIEMPO DE SERVICIOS",
+    "COD_054": "CATEGORÍA",
+    "COD_055": "FECHA FALLECIMIENTO" } ]

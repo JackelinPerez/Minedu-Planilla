@@ -17,7 +17,6 @@ class Hello extends React.Component {
    }
   
    handleSubmit = () =>{
-
    }
 
     render() {
@@ -37,7 +36,6 @@ class Hello extends React.Component {
             >
             <Button variant="danger" type="submit"> Submit </Button>
             </Link>
-
          </Form>    
       </div>
      )

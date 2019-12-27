@@ -18,12 +18,9 @@ class App extends React.Component {
       <Router>
       <div>
         <Switch>
-          <Route exact path="/" component={Hello}>
-          </Route>           
-          <Route path="/resultados" component={Resultados}>
-          </Route>
-          <Route path="/devengados" component={Devengados} >
-          </Route>
+          <Route exact path="/" component={Hello}></Route>           
+          <Route path="/resultados" component={Resultados}></Route>
+          <Route path="/devengados" component={Devengados}></Route>
         </Switch>
       </div>
     </Router>
