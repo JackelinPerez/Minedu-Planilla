@@ -1,6 +1,12 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import {Button, Alert, Form} from 'react-bootstrap';
+import {getObjectTable} from '../functions/tableSearch';
+
+import dataCuadroComparativo from '../data/CuadroComparativo.json';
+import dataPlanilla from '../data/Planilla.json';
+import {rulesBusinnnes} from '../businessRules/admin/rules'
+import {fcl} from '../businessRules/admin/FCL';
 
 class Hello extends React.Component {
    constructor(props) {
@@ -20,7 +26,10 @@ class Hello extends React.Component {
    }
 
     render() {
-
+      // console.log('Resultado: '+ getObjectTable(dataCuadroComparativo, 'COD-CP-01', 'F-8')['COD-CP-02']);
+      // console.log('rules_1: '+ rulesBusinnnes(dataPlanilla, 'COD-012', 'COD-001','6023682', ''));
+      // console.log('rules_2: '+ rulesBusinnnes(dataPlanilla, 'COD-017', 'COD-001','6023682', ''));
+      // console.log('rules_3: '+ rulesBusinnnes(dataPlanilla, 'COD-027', 'COD-001','6023682', dataCuadroComparativo));
      return (
       <div>
          <Alert variant="info" >Hello Katapulta</Alert>
