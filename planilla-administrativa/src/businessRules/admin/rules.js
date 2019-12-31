@@ -1,5 +1,6 @@
 import {getObjectTable, getDataObjectTable} from '../../functions/tableSearch';
 import {fcl} from '../../businessRules/admin/FCL';
+import { cod_024 } from './COD_024';
 
 
 export const rulesBusinnnes =(dataArrayP, codePR, codeP, dataP, dataArrayCC)=>{
@@ -15,52 +16,52 @@ export const rulesBusinnnes =(dataArrayP, codePR, codeP, dataP, dataArrayCC)=>{
             result = getDataObjectTable(dataArrayP, codeP, dataP, codePR);
             break;
         case 'COD-027':
-            result = (parseFloat(getDataObjectTable(dataArrayCC, 'COD-CP-01', valueUser['COD-055'], 'COD-CP-02'))*valueFcl).toFixed(2);
+            result = (getDataObjectTable(dataArrayCC, 'COD-CP-01', valueUser['COD-055'], 'COD-CP-02')*valueFcl).toFixed(2);
             break;
         case 'COD-029':
-            
+            result = (getDataObjectTable(dataArrayP, codeP, dataP, codePR)*valueFcl).toFixed(2);
             break;
         case 'COD-044':
-            
+            result = getDataObjectTable(dataArrayCC, 'COD-CP-01', valueUser['COD-055'], 'COD-CP-06');
             break;
         case 'COD-016':
-            
+            result = getDataObjectTable(dataArrayP, codeP, dataP, codePR);
             break;
         case 'COD-028':
-            
+            result = (getDataObjectTable(dataArrayCC, 'COD-CP-01', valueUser['COD-055'], 'COD-CP-03')*valueFcl).toFixed(2);
             break;
         case 'COD-045':
-            
+            result = (getDataObjectTable(dataArrayCC, 'COD-CP-01', valueUser['COD-055'], 'COD-CP-05')*valueFcl).toFixed(2);
             break;
         case 'COD-013':
-            
+            result = getDataObjectTable(dataArrayP, codeP, dataP, codePR);
             break;
         case 'COD-021':
-            
+            result = getDataObjectTable(dataArrayCC, 'COD-CP-01', valueUser['COD-055'], 'COD-CP-09');
             break;
         case 'COD-011':
-            
+            result = (getDataObjectTable(dataArrayCC, 'COD-CP-01', valueUser['COD-055'], 'COD-CP-10')*valueFcl).toFixed(2);
             break;
         case 'COD-010':
-            
+            result = (getDataObjectTable(dataArrayCC, 'COD-CP-01', valueUser['COD-055'], 'COD-CP-11')*valueFcl).toFixed(2);
             break;
         case 'COD-009':
-            
+            result = (getDataObjectTable(dataArrayCC, 'COD-CP-01', valueUser['COD-055'], 'COD-CP-12')*valueFcl).toFixed(2);
             break;
         case 'COD-015':
-            
+            result = (getDataObjectTable(dataArrayP, codeP, dataP, codePR)*valueFcl).toFixed(2);
             break;
         case 'COD-018':
-            
+            result = (getDataObjectTable(dataArrayP, codeP, dataP, codePR)*valueFcl).toFixed(2);
             break;
         case 'COD-024':
-            
+            result = cod_024(dataArrayP, codePR, codeP, dataP, dataArrayCC, valueUser, );
             break;
         case 'COD-026':
-            
+            result = (getDataObjectTable(dataArrayP, codeP, dataP, codePR)*valueFcl).toFixed(2);
             break;
         case 'COD-014':
-            
+            result = (getDataObjectTable(dataArrayCC, 'COD-CP-01', valueUser['COD-055'], 'COD-CP-15')*valueFcl).toFixed(2);
             break;
         case 'COD-008':
             
@@ -81,6 +82,9 @@ export const rulesBusinnnes =(dataArrayP, codePR, codeP, dataP, dataArrayCC)=>{
             
             break;
         case 'COD-023':
+            
+            break;
+        case 'COD-025':
             
             break;
         case 'COD-042':
@@ -121,7 +125,7 @@ export const rulesBusinnnes =(dataArrayP, codePR, codeP, dataP, dataArrayCC)=>{
             break;
         case 'COD-034':
             
-            break;                                
+            break;                                      
         default:
             break;
     }
