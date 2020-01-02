@@ -1,8 +1,25 @@
-import {rulesBusinnnes} from './rules';
+import {rulesBusinnnes} from './control';
+import {getDataObjectTable} from '../../functions/tableSearch';
+import {sumRules} from './SumRules';
 
-export const cod_024 = (dataArrayP, codePR, codeP, dataP, dataArrayCC, valueUser, valueFcl) =>{
-
-    const arrayRulesBasic = ['COD-012','COD-017','COD-027','COD-029','COD-044','COD-016','COD-028','COD-045', 'COD-013','COD-021','COD-011','COD-010','COD-009','COD-015','COD-018'];
+export const cod_024 = (arrayRulesBasic, dataArrayP, codeP, dataP, dataArrayCC, valueUser, valueFcl) =>{
     let result = 0;
+    const sumRulesAux = sumRules(arrayRulesBasic, dataArrayP, codeP, dataP, dataArrayCC);
+    const cod_018 = rulesBusinnnes(dataArrayP, 'COD-018', codeP, dataP, dataArrayCC);
+    const cod_DU037_94 = getDataObjectTable(dataArrayCC, 'COD-CP-01', valueUser['COD-055'], 'COD-CP-14');
+
+    if(cod_018 === 0){
+        if(parseFloat(valueUser['COD-053']) < 20 && sumRulesAux <= 100) {
+            result = 100 - sumRulesAux;
+        }else {
+            if(parseFloat(valueUser['COD-053']) >= 20 && (sumRulesAux + cod_DU037_94) <= 300){
+                result = 300 - sumRulesAux;
+            } else {
+                if(parseFloat(valueUser['COD-053']) >= 20){
+                    result = parseFloat((cod_DU037_94*valueFcl).toFixed(2));
+                }
+            }
+        }
+    }
     return result;
 }
