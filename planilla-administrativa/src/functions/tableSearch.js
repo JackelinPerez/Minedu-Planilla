@@ -9,12 +9,27 @@ export const getObjectTable = (data, code, dataCode) =>{
    return data.filter(obj => obj[code] === dataCode)[0];
 }
 
-export const getDataObjectTable = (data, code, dataCode, idDataCode) =>{
-   const value = getObjectTable(data, code, dataCode);
-   return (value[idDataCode] === undefined)? 0: parseFloat(value[idDataCode]);
+export const getDataObjec = (obj, key) =>{
+   return (obj[key] === undefined)? 0: parseFloat(obj[key]);
 }
 
-export const getFormtPlanilla = (objUser, arrayObjDataCod, code, dataCode) =>{
+export const getDataObjectTable = (data, code, dataCode, idDataCode) =>{
+   const value = getObjectTable(data, code, dataCode);
+   return getDataObjec(value, idDataCode);
+}
+
+export const ordenConceptPlanilla = (arrayOrden, objectUserPLanilla) =>{
+   return arrayOrden.reduce((objUserOrden, concept)=>{
+      const getDataNew = getDataObjec({... objectUserPLanilla}, concept);
+      objUserOrden = {
+         ... objUserOrden,
+         [concept] : getDataNew
+      }
+      return objUserOrden;
+   }, {})
+}
+
+export const getFormtPlanilla = (objUser, arrayObjDataCod) =>{
     const objUserPlanilla = [];
     Object.keys(objUser).forEach((ele)=>{
        objUserPlanilla.push({

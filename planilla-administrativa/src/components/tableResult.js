@@ -16,16 +16,17 @@ import {arrayAllRules} from '../businessRules/admin/allRulesP';
 import { getAllConceptAdmin} from '../businessRules/constrolers';
 
 /*buscando planilla*/
-import {getFormtPlanilla, getObjectTable} from '../functions/tableSearch';
+import {getFormtPlanilla, getObjectTable, ordenConceptPlanilla} from '../functions/tableSearch';
 
 class Resultados extends React.Component {
 
   render() {
    const {dni}= this.props.location;
    const userPlanillaObject = getObjectTable(dataPlanilla, 'COD-001', dni);
-   const userPlanilla = getFormtPlanilla(userPlanillaObject, dataCodPlanilla,'COD-001',dni);
+   const userOrdenPlanilla = ordenConceptPlanilla(arrayAllRules, userPlanillaObject);
+   const userPlanilla = getFormtPlanilla(userOrdenPlanilla, dataCodPlanilla);
    const userPlanillaObjectProject = getAllConceptAdmin(dataPlanilla, arrayAllRules, 'COD-001',dni, dataCuadroComparativo);
-   const userPlanillaProject = getFormtPlanilla(userPlanillaObjectProject, dataCodPlanilla,'COD-001',dni);
+   const userPlanillaProject = getFormtPlanilla(userPlanillaObjectProject, dataCodPlanilla);
      return (
         <div>
          <Row>

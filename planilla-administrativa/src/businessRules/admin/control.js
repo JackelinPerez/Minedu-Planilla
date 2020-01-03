@@ -24,7 +24,9 @@ export const rulesBusinnnes =(dataArrayP, codePR, codeP, dataP, dataArrayCC)=>{
             result = getDataObjectTable(dataArrayP, codeP, dataP, codePR);
             break;
         case 'COD-027':
-            result = parseFloat((getDataObjectTable(dataArrayCC, 'COD-CP-01', valueUser['COD-055'], 'COD-CP-02')*valueFcl).toFixed(2));
+            /*A nivel front dejar como figura en planilla  */
+            // result = parseFloat((getDataObjectTable(dataArrayCC, 'COD-CP-01', valueUser['COD-055'], 'COD-CP-02')*valueFcl).toFixed(2));
+            result = getDataObjectTable(dataArrayP, codeP, dataP, codePR);
             break;
         case 'COD-029':
             result = parseFloat((getDataObjectTable(dataArrayP, codeP, dataP, codePR)*valueFcl).toFixed(2));

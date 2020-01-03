@@ -2,14 +2,6 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import {Button, Alert, Form} from 'react-bootstrap';
 
-import dataCuadroComparativo from '../data/CuadroComparativo.json';
-import dataPlanilla from '../data/Planilla.json';
-import {rulesBusinnnes} from '../businessRules/admin/control'
-
-/*Pruebando todos los conceptos de pago */
-import {arrayAllRules} from '../businessRules/admin/allRulesP';
-import { getAllConceptAdmin} from '../businessRules/constrolers';
-
 class Hello extends React.Component {
    constructor(props) {
       super(props);

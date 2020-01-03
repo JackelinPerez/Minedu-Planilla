@@ -21,7 +21,6 @@ export const arrayAllRules = [
     'COD-020',
     'COD-022',
     'COD-019',
-    'COD-XXX',
     'COD-038',
     'COD-023',
     'COD-025',
