@@ -40,7 +40,12 @@ export const getFormtPlanilla = (objUser, arrayObjDataCod) =>{
     return objUserPlanilla;
 }
 
-export const getCuadroComparativo = () =>{
-
+export const getIndexCuadroComparativo = (array1, array2) =>{
+   return array1.reduce((acumIndex, ele, index)=>{
+      if(ele.value !== array2[index].value) {
+         acumIndex.push(index);
+      }
+      return acumIndex
+   }, [])
 }
  

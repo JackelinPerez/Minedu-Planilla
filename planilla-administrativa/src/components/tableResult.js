@@ -12,11 +12,15 @@ import dataCodPlanilla from '../data/Cod_Planilla.json';
 import dataCuadroComparativo from '../data/CuadroComparativo.json';
 
 /*conceptos totales de planilla */
-import {arrayAllRules} from '../businessRules/admin/allRulesP';
+import {arrayAllRules, arrayIndexCss} from '../businessRules/admin/globals';
 import { getAllConceptAdmin} from '../businessRules/constrolers';
 
 /*buscando planilla*/
-import {getFormtPlanilla, getObjectTable, ordenConceptPlanilla} from '../functions/tableSearch';
+import {getFormtPlanilla, getObjectTable, ordenConceptPlanilla, getIndexCuadroComparativo} from '../functions/tableSearch';
+
+function rowStyleFormat(row, rowIdx) {
+   return { color: rowIdx % 2 === 0 ? '#FF00F7' : '#00F7FF' };
+ }
 
 class Resultados extends React.Component {
 
@@ -27,19 +31,25 @@ class Resultados extends React.Component {
    const userPlanilla = getFormtPlanilla(userOrdenPlanilla, dataCodPlanilla);
    const userPlanillaObjectProject = getAllConceptAdmin(dataPlanilla, arrayAllRules, 'COD-001',dni, dataCuadroComparativo);
    const userPlanillaProject = getFormtPlanilla(userPlanillaObjectProject, dataCodPlanilla);
+
+   const pruebita = getIndexCuadroComparativo(userPlanilla, userPlanillaProject);
+
+   console.log('diferencias: '+pruebita + '; longitud='+pruebita.length);
+   
+
      return (
         <div>
          <Row>
             <Col>
             <Alert variant="info">Planilla Minedu</Alert>
-            <BootstrapTable data={userPlanilla} striped hover id='01'>
+            <BootstrapTable data={userPlanilla} id='01' trStyle={rowStyleFormat}>
                <TableHeaderColumn isKey dataField='code'>Descripcion</TableHeaderColumn>
-               <TableHeaderColumn dataField='value' >Valor</TableHeaderColumn>
+               <TableHeaderColumn dataField='value'>Valor</TableHeaderColumn>
             </BootstrapTable>
             </Col>
             <Col>
             <Alert variant="info">Pension Proyectada </Alert>
-            <BootstrapTable data={userPlanillaProject} striped hover id='02'>
+            <BootstrapTable data={userPlanillaProject}  id='02'>
                <TableHeaderColumn isKey dataField='code'>Descripcion</TableHeaderColumn>
                <TableHeaderColumn dataField='value' >Valor</TableHeaderColumn>
             </BootstrapTable>

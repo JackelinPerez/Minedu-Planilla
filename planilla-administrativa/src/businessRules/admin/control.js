@@ -8,7 +8,7 @@ import {readjustment} from './COD_Readjustment';
 import { sumRules } from './SumRules';
 
 /*Pruebando todos los conceptos de pago */
-import {arrayAllRules} from './allRulesP';
+import {arrayAllRules} from './globals';
 
 
 export const rulesBusinnnes =(dataArrayP, codePR, codeP, dataP, dataArrayCC)=>{
@@ -16,6 +16,9 @@ export const rulesBusinnnes =(dataArrayP, codePR, codeP, dataP, dataArrayCC)=>{
     const valueUser = getObjectTable(dataArrayP, codeP, dataP);
     const valueFcl = fcl(parseFloat(valueUser['COD-053']), parseFloat(valueUser['COD-054']), valueUser['COD-050']);
     
+    console.log('FCL: '+valueFcl);
+    
+
     switch (codePR) {
         case 'COD-012':
             result = getDataObjectTable(dataArrayP, codeP, dataP, codePR);
@@ -25,8 +28,8 @@ export const rulesBusinnnes =(dataArrayP, codePR, codeP, dataP, dataArrayCC)=>{
             break;
         case 'COD-027':
             /*A nivel front dejar como figura en planilla  */
-            // result = parseFloat((getDataObjectTable(dataArrayCC, 'COD-CP-01', valueUser['COD-055'], 'COD-CP-02')*valueFcl).toFixed(2));
-            result = getDataObjectTable(dataArrayP, codeP, dataP, codePR);
+            result = parseFloat((getDataObjectTable(dataArrayCC, 'COD-CP-01', valueUser['COD-055'], 'COD-CP-02')*valueFcl).toFixed(2));
+            // result = getDataObjectTable(dataArrayP, codeP, dataP, codePR);
             break;
         case 'COD-029':
             result = parseFloat((getDataObjectTable(dataArrayP, codeP, dataP, codePR)*valueFcl).toFixed(2));
