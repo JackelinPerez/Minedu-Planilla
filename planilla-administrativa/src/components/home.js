@@ -8,6 +8,7 @@ import {rulesBusinnnes} from '../businessRules/admin/control'
 
 /*Pruebando todos los conceptos de pago */
 import {arrayAllRules} from '../businessRules/admin/allRulesP';
+import { getAllConceptAdmin} from '../businessRules/constrolers';
 
 class Hello extends React.Component {
    constructor(props) {
@@ -27,12 +28,6 @@ class Hello extends React.Component {
    }
 
     render() {
-      arrayAllRules.forEach((ele, index) =>{
-         console.log('rules ['+ index +'] = '+ rulesBusinnnes(dataPlanilla, ele, 'COD-001','6023682', dataCuadroComparativo));
-      })
-
-      console.log('Monto total calculado '+ rulesBusinnnes(dataPlanilla, 'result-All', 'COD-001','6023682', dataCuadroComparativo));
-
      return (
       <div>
          <Alert variant="info" >Hello Katapulta</Alert>

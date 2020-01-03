@@ -1,4 +1,3 @@
-import {rulesBusinnnes} from './control';
 import {sumRules} from './SumRules';
 
 export const cod_008 = (arrayRulesBasic, dataArrayP, codeP, dataP, dataArrayCC, valueUser) =>{

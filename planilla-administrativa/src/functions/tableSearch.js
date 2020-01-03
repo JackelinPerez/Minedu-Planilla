@@ -1,4 +1,4 @@
-export const getMeaningCode = (arrayObjCod,code) =>{
+export const getMeaningCode = (arrayObjCod, code) =>{
     return Object.keys(arrayObjCod[0]).reduce((ele1,eleMain)=>{
        if(eleMain === code) ele1 = arrayObjCod[0][eleMain];
        return ele1;
@@ -14,13 +14,12 @@ export const getDataObjectTable = (data, code, dataCode, idDataCode) =>{
    return (value[idDataCode] === undefined)? 0: parseFloat(value[idDataCode]);
 }
 
-export const getFormtPlanilla = (arrayObjData, arrayObjDataCod, code, dataCode) =>{
+export const getFormtPlanilla = (objUser, arrayObjDataCod, code, dataCode) =>{
     const objUserPlanilla = [];
-    const objUser = arrayObjData.filter((ele)=> ele[code] === dataCode);
-    Object.keys(objUser[0]).forEach((ele)=>{
+    Object.keys(objUser).forEach((ele)=>{
        objUserPlanilla.push({
           code: getMeaningCode(arrayObjDataCod,ele),
-          value: objUser[0][ele]
+          value: objUser[ele]
        })
     })
     return objUserPlanilla;
