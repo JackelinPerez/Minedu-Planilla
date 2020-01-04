@@ -38,5 +38,3 @@ export const arrayAllRules = [
     'COD-035',
     'COD-034',
     ];
-
-    export let arrayIndexCss = [''];
