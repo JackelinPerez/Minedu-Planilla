@@ -29,12 +29,13 @@ export const ordenConceptPlanilla = (arrayOrden, objectUserPLanilla) =>{
    }, {})
 }
 
-export const getFormtPlanilla = (objUser, arrayObjDataCod) =>{
+export const getFormtPlanilla = (objUserReal,objUserProject, arrayObjDataCod) =>{
     const objUserPlanilla = [];
-    Object.keys(objUser).forEach((ele)=>{
+    Object.keys(objUserReal).forEach((ele)=>{
        objUserPlanilla.push({
           code: getMeaningCode(arrayObjDataCod,ele),
-          value: objUser[ele]
+          valuePlanilla: objUserReal[ele],
+          valueProject: objUserProject[ele]
        })
     })
     return objUserPlanilla;

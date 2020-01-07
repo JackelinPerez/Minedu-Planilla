@@ -151,10 +151,11 @@ export const rulesBusinnnes =(dataArrayP, codePR, codeP, dataP, dataArrayCC)=>{
         case 'COD-034':
             if(readjustment(2018, valueUser) >= 65) result = 29;
             break;
-        case 'result-All':
-            result = sumRules(arrayAllRules, dataArrayP, codeP, dataP, dataArrayCC).toFixed(2);
+        case 'COD-049':
+            result = parseFloat(sumRules(arrayAllRules.slice(0,arrayAllRules.length-1), dataArrayP, codeP, dataP, dataArrayCC).toFixed(2));
             break;                                              
         default:
+            result = 0;
             break;
     }
     return result;

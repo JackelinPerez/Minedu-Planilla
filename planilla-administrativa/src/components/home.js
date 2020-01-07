@@ -22,7 +22,10 @@ class Hello extends React.Component {
     render() {
      return (
       <div>
-         <Alert variant="info" >Hello Katapulta</Alert>
+         <Alert variant="info" >
+            <h1>Minedu</h1>
+            <p>Recalculo de Pensión</p>
+         </Alert>
          <Form onSubmit={this.handleSubmit} onChange={this.myChangeHandler} >
             <Form.Group controlId="formDNI" >
                <Form.Control type="number" placeholder="Ingrese su DNI" />

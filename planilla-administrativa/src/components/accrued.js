@@ -3,13 +3,26 @@ import {Link} from "react-router-dom";
 import {Button, Alert} from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
+import { Preview, print } from 'react-html2pdf';
+
+// import {printPDF} from '../outPrint/control'
+
+import { PrintAdmin} from '../outPrint/admin/notificacion'
 
 class Devengados extends React.Component {
-  render() {
-     const {nombre}= this.props.location;
+
+   render() {
+   const {objDiff}= this.props.location;
+   Object.keys(objDiff).forEach(element => {
+      console.log('Pension proyectada: ['+ element +']'+'= '+objDiff[element]);
+   });
+
      return (
       <div>
-         <Alert variant="info">{nombre}</Alert>
+         <Preview id={'out-admin'} >
+            <PrintAdmin></PrintAdmin>
+         </Preview>
+         <button onClick={()=>print('pruebita', 'out-admin')}> Imprimete!</button>
          <Link to="/"><Button variant="outline-info">Principal</Button></Link>
       </div>
      )
@@ -17,7 +30,8 @@ class Devengados extends React.Component {
 }
 
 Devengados.propTypes = {
-   nombre: PropTypes.string
+   objPlanillaProject: PropTypes.object,
+   objDiff: PropTypes.object
 }
 
 export default Devengados;

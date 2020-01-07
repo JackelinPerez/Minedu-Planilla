@@ -21,6 +21,7 @@ export const arrayAllRules = [
     'COD-020',
     'COD-022',
     'COD-019',
+    'COD-XXX',
     'COD-038',
     'COD-023',
     'COD-025',
@@ -37,4 +38,5 @@ export const arrayAllRules = [
     'COD-033',
     'COD-035',
     'COD-034',
+    'COD-049'
     ];
