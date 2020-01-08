@@ -16,9 +16,6 @@ export const rulesBusinnnes =(dataArrayP, codePR, codeP, dataP, dataArrayCC)=>{
     const valueUser = getObjectTable(dataArrayP, codeP, dataP);
     const valueFcl = fcl(parseFloat(valueUser['COD-053']), parseFloat(valueUser['COD-054']), valueUser['COD-050']);
     
-    console.log('FCL: '+valueFcl);
-    
-
     switch (codePR) {
         case 'COD-012':
             result = getDataObjectTable(dataArrayP, codeP, dataP, codePR);
@@ -110,7 +107,7 @@ export const rulesBusinnnes =(dataArrayP, codePR, codeP, dataP, dataArrayCC)=>{
             result = getDataObjectTable(dataArrayP, codeP, dataP, codePR);
             break;
         case 'COD-042':
-            const arrayRulesBasic_042 = ['COD-012','COD-017','COD-027','COD-029','COD-044','COD-016','COD-028','COD-045', 'COD-013','COD-021','COD-011','COD-010','COD-009','COD-015', 'COD-018', 'COD-024', 'COD-026', 'COD-014', 'COD-008', 'COD-020', 'COD-022', 'COD-019', 'COD-XXX', 'COD-023', 'COD-025' ];
+            const arrayRulesBasic_042 = ['COD-012','COD-017','COD-027','COD-029','COD-044','COD-016','COD-028','COD-045', 'COD-013','COD-021','COD-011','COD-010','COD-009','COD-015', 'COD-018', 'COD-024', 'COD-026', 'COD-014', 'COD-008', 'COD-020', 'COD-022', 'COD-019', 'COD-XXX', 'COD-038', 'COD-023', 'COD-025' ];
             if(readjustment(2006, valueUser) >= 65){
                 result = cod_020_022_029(arrayRulesBasic_042, dataArrayP, codeP, dataP, dataArrayCC, 0.00745);
             }            

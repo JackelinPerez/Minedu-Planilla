@@ -20,11 +20,20 @@ class Hello extends React.Component {
    }
 
     render() {
-     return (
-      <div>
+     return (    
+      <div id='bodydy'>
+      <style>
+      {`
+            #bodydy{
+               text-align: center;
+               margin-left: auto;
+               margin-right: auto;
+               padding: 0% 5%;
+            }
+      `}
+      </style>          
          <Alert variant="info" >
             <h1>Minedu</h1>
-            <p>Recalculo de Pensión</p>
          </Alert>
          <Form onSubmit={this.handleSubmit} onChange={this.myChangeHandler} >
             <Form.Group controlId="formDNI" >

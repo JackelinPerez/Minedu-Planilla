@@ -18,8 +18,6 @@ import { getAllConceptAdmin} from '../businessRules/constrolers';
 /*buscando planilla*/
 import {getFormtPlanilla, getObjectTable, ordenConceptPlanilla} from '../functions/tableSearch';
 
-/*Convirtiendo de html to pdf */
-import { Preview, print } from 'react-html2pdf';
 
 const matchResult = (arrayConcepts, objPlanillaReal, objPlanillaProject) =>{
    return arrayConcepts.reduce((acumObject, concept)=>{
@@ -54,8 +52,17 @@ export class Resultados extends React.Component {
    const objetResult = matchResult(arrayAllRules, userOrdenPlanilla, userPlanillaObjectProject);
 
      return (
-        <div>
-         <Preview id={'out-admins'} style={{width: "50%", height: "50%"}}>
+        <div id= 'bodydy'>
+            <style>
+            {`
+                  #bodydy{
+                     text-align: center;
+                     margin-left: auto;
+                     margin-right: auto;
+                     padding: 0% 5%;
+                  }
+            `}
+            </style>           
             <Jumbotron>
                <h1>¡Bienvenido, {userPlanillaObject['COD-007']}!</h1><br/>
                <p><strong>DNI: </strong>{userPlanillaObject['COD-001']}</p>
@@ -64,24 +71,24 @@ export class Resultados extends React.Component {
             </Jumbotron>
             <Row>
                <Col>
-               <Alert variant="info">Calculo devengados</Alert>
-               <BootstrapTable data={this.userPlanilla} id='01' trStyle={this.rowStyleFormat}>
+               <Alert variant="info">Recalculo de Pensión</Alert>
+               <BootstrapTable data={this.userPlanilla} id='table-result' trStyle={this.rowStyleFormat}>
                   <TableHeaderColumn width='200' dataField='code' isKey>Descripcion</TableHeaderColumn>
-                  <TableHeaderColumn width='200' dataField='valuePlanilla'>Planilla</TableHeaderColumn>
-                  <TableHeaderColumn width='200' dataField='valueProject'>Proyectada</TableHeaderColumn>
+                  <TableHeaderColumn width='200' dataField='valuePlanilla'>Pension Actual</TableHeaderColumn>
+                  <TableHeaderColumn width='200' dataField='valueProject'>Pension Recalculada</TableHeaderColumn>
                </BootstrapTable>
                </Col>
             </Row>
-         </Preview>   
          <Link 
             to={{
                pathname: "/devengados",
                objPlanillaProject: userPlanillaObjectProject,
-               objDiff: objetResult
+               objTablePP: this.userPlanilla,
+               objDiff: objetResult,
+               objInfoUser: userPlanillaObject,
             }}>
             <Button variant="outline-info">Emitir Notificación</Button>
          </Link>
-         <button onClick={()=>print('pruebita', 'out-admins')}> Imprimete!</button>
         </div>
      )
   }
