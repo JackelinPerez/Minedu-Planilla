@@ -29,11 +29,13 @@ class Hello extends React.Component {
                margin-left: auto;
                margin-right: auto;
                padding: 0% 5%;
+               background-image: url("../image/background-Minedu.png");
             }
       `}
       </style>          
          <Alert variant="info" >
-            <h1>Minedu</h1>
+            <h1>MINEDU</h1>
+            <h1>Atención de solicitudes 20530</h1>
          </Alert>
          <Form onSubmit={this.handleSubmit} onChange={this.myChangeHandler} >
             <Form.Group controlId="formDNI" >
@@ -45,7 +47,7 @@ class Hello extends React.Component {
                dni: this.state.formDNI
             }}
             >
-            <Button variant="danger" type="submit"> Submit </Button>
+            <Button variant="danger" type="submit"> Ok </Button>
             </Link>
          </Form>    
       </div>

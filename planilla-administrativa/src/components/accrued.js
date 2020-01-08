@@ -37,8 +37,8 @@ class Devengados extends React.Component {
             <PrintAdmin objPlanilla={objPlanillaProject} objDataUser={objInfoUser} tableView={objTablePP}></PrintAdmin>
          </Preview>
          <div id='main-crued'>         
-         <Button variant="outline-info" onClick={()=>print('pruebita', 'out-admin')}> Imprimir</Button>
-         <Link to="/"><Button variant="outline-info">Principal</Button></Link>         
+         <Button variant="outline-info" onClick={()=>print('pruebita', 'out-admin')}> Imprimir</Button><br/><br/>
+         <Link to="/"><Button variant="outline-dark">Salir</Button></Link>         
          </div>    
       </div>
      )

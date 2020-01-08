@@ -12,12 +12,28 @@ import dataCodPlanilla from '../data/Cod_Planilla.json';
 import dataCuadroComparativo from '../data/CuadroComparativo.json';
 
 /*conceptos totales de planilla */
-import {arrayAllRules} from '../businessRules/admin/globals';
+import {arrayAllRules, arrayAllRulesV} from '../businessRules/admin/globals';
 import { getAllConceptAdmin} from '../businessRules/constrolers';
 
 /*buscando planilla*/
 import {getFormtPlanilla, getObjectTable, ordenConceptPlanilla} from '../functions/tableSearch';
 
+const resultNotif = (key) =>{
+   let result = {};
+
+   switch (key) {
+      case 0:
+         result.value = 'Se verificó que la pensión que viene recibiendo es la CORRECTA';
+         result.style = 'warning';
+         break;
+   
+      default:
+         result.value = 'Se verifico que el calculo es INCORRECTO, se procedera a regularizar su pago ';
+         result.style = 'danger';
+         break;
+   }
+   return result;
+}
 
 const matchResult = (arrayConcepts, objPlanillaReal, objPlanillaProject) =>{
    return arrayConcepts.reduce((acumObject, concept)=>{
@@ -29,6 +45,15 @@ const matchResult = (arrayConcepts, objPlanillaReal, objPlanillaProject) =>{
       }
       return acumObject;
    },{})
+}
+
+const artificioView = (objPlanillaReal, objPlanillaProject) =>{
+   let objViewPlanillaP = {...objPlanillaProject};
+   const sumPensionBasica = objPlanillaProject['COD-027'] + objPlanillaProject['COD-XXX'];
+   if(objPlanillaReal['COD-027'] === sumPensionBasica) {
+      objViewPlanillaP['COD-027'] = sumPensionBasica;
+   }
+   return objViewPlanillaP;
 }
 
 export class Resultados extends React.Component {
@@ -47,10 +72,19 @@ export class Resultados extends React.Component {
    const userOrdenPlanilla = ordenConceptPlanilla(arrayAllRules, userPlanillaObject);
    const userPlanillaObjectProject = getAllConceptAdmin(dataPlanilla, arrayAllRules, 'COD-001',dni, dataCuadroComparativo);
 
-   this.userPlanilla = getFormtPlanilla(userOrdenPlanilla, userPlanillaObjectProject, dataCodPlanilla);
+   const userOrdenPlanillaV = ordenConceptPlanilla(arrayAllRulesV, userPlanillaObject);
+   const userPlanillaObjectProjectV = artificioView(userOrdenPlanilla, userPlanillaObjectProject);
+   const userPlanillaObjectProjectVV = ordenConceptPlanilla(arrayAllRulesV, userPlanillaObjectProjectV);
 
-   const objetResult = matchResult(arrayAllRules, userOrdenPlanilla, userPlanillaObjectProject);
+   this.userPlanilla = getFormtPlanilla(userOrdenPlanillaV, userPlanillaObjectProjectVV, dataCodPlanilla);
 
+   const objetResult = matchResult(arrayAllRulesV, userOrdenPlanillaV, userPlanillaObjectProjectVV);
+   const resultProyectada = resultNotif(Object.keys(objetResult).length);
+
+   console.log('Hubo recalculo= '+ Object.keys(objetResult).length);
+   Object.keys(objetResult).forEach(element => {
+      console.log('['+element+']'+'= '+ objetResult[element]);
+   });
      return (
         <div id= 'bodydy'>
             <style>
@@ -79,10 +113,11 @@ export class Resultados extends React.Component {
                </BootstrapTable>
                </Col>
             </Row>
+               <Alert variant={resultProyectada.style}>{resultProyectada.value}</Alert>
          <Link 
             to={{
                pathname: "/devengados",
-               objPlanillaProject: userPlanillaObjectProject,
+               objPlanillaProject: userPlanillaObjectProjectVV,
                objTablePP: this.userPlanilla,
                objDiff: objetResult,
                objInfoUser: userPlanillaObject,
