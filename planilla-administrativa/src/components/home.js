@@ -1,6 +1,13 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import {Button, Alert, Form} from 'react-bootstrap';
+import Background from '../image/icono.jpg';
+import backgroundA from '../image/background-Minedu.png'
+import '../css/home-style.css'
+
+const divStyle = {
+   // backgroundImage: `url(${backgroundA})`
+ }
 
 class Hello extends React.Component {
    constructor(props) {
@@ -21,24 +28,19 @@ class Hello extends React.Component {
 
     render() {
      return (    
-      <div id='bodydy'>
-      <style>
-      {`
-            #bodydy{
-               text-align: center;
-               margin-left: auto;
-               margin-right: auto;
-               padding: 0% 5%;
-               background-image: url("../image/background-Minedu.png");
-            }
-      `}
-      </style>          
-         <Alert variant="info" >
-            <h1>MINEDU</h1>
-            <h1>Atención de solicitudes 20530</h1>
-         </Alert>
+      <div className="home" style={divStyle}>
+         <section className="logo">
+            <img src={Background} alt="Logo" />
+            <div>
+               <h2>Transferencia</h2>
+               <h1>MINEDU</h1>
+            </div>
+         </section>
+         <h1 className="title">Atención de solicitudes 20530</h1>
+
+
          <Form onSubmit={this.handleSubmit} onChange={this.myChangeHandler} >
-            <Form.Group controlId="formDNI" >
+            <Form.Group controlId="formDNI">
                <Form.Control type="number" placeholder="Ingrese su DNI" />
             </Form.Group>
             <Link   
@@ -47,7 +49,7 @@ class Hello extends React.Component {
                dni: this.state.formDNI
             }}
             >
-            <Button variant="danger" type="submit"> Ok </Button>
+            <Button type="submit" variant="boton"> Ok </Button>
             </Link>
          </Form>    
       </div>

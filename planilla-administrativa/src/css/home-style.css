@@ -1,0 +1,33 @@
+.home{
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    color: #3F94A9;
+    margin: 5%;
+    padding: 2% 10%;
+    border-style: solid;
+    border-radius: 20px;
+    background-color: #F8F8FF;
+
+}
+
+.logo{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    padding: 5%;
+}
+
+.title{
+    color: #858688;
+}
+
+.formDNI{
+    padding: 5%;
+}
+
+
+.btn-boton {
+   background-color: #3F94A9;
+   color: white;
+}
