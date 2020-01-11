@@ -1,4 +1,4 @@
-import {getObjectTable, getDataObjectTable} from '../../functions/tableSearch';
+import {getObjectTable, getDataObjectTable} from '../../functions/admin/tableSearch';
 import {fcl} from './FCL';
 import {cod_024 } from './COD_024';
 import {cod_008} from './COD_008';
@@ -8,7 +8,7 @@ import {readjustment} from './COD_Readjustment';
 import { sumRules } from './SumRules';
 
 /*Pruebando todos los conceptos de pago */
-import {arrayAllRules} from './globals';
+import {arrayAllRules} from '../../utils/admin/globals';
 
 
 export const rulesBusinnnes =(dataArrayP, codePR, codeP, dataP, dataArrayCC)=>{

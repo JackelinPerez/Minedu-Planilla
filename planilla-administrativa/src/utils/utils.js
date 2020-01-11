@@ -1,3 +1,5 @@
+import jsPDF from 'jspdf';
+
 export const getHour = () => {
     let h, m, s; 
     
@@ -18,7 +20,7 @@ export const getHour = () => {
     return result;
   };
 
-  export const getDay = () =>{
+export const getDay = () =>{
 
     const months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo',
       'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
@@ -31,4 +33,12 @@ export const getHour = () => {
 
     const result = day + ' ' + months[month] + ' ' + yy;
     return result
-  }
+}
+
+export const printPDF = (data, namePdf) =>{
+    const doc = new jsPDF();
+    doc.addHTML(data,function() {
+        doc.save(namePdf);
+    });
+    return 1;
+}

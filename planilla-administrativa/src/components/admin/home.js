@@ -1,15 +1,15 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import {Button, Alert, Form} from 'react-bootstrap';
-import Background from '../image/icono.jpg';
-import backgroundA from '../image/background-Minedu.png'
-import '../css/home-style.css'
+import Background from '../../image/icono.png';
+import backgroundA from '../../image/background-Minedu.png'
+import '../../css/home-style.css'
 
 const divStyle = {
    // backgroundImage: `url(${backgroundA})`
  }
 
-class Hello extends React.Component {
+class home extends React.Component {
    constructor(props) {
       super(props);
       this.state={formDNI:0}
@@ -31,13 +31,12 @@ class Hello extends React.Component {
       <div className="home" style={divStyle}>
          <section className="logo">
             <img src={Background} alt="Logo" />
-            <div>
-               <h2>Transferencia</h2>
-               <h1>MINEDU</h1>
+            <div className= "title-logo">
+               <p className="t">Transferencia</p>
+               <h1 className="m">MINEDU</h1>
             </div>
          </section>
          <h1 className="title">Atención de solicitudes 20530</h1>
-
 
          <Form onSubmit={this.handleSubmit} onChange={this.myChangeHandler} >
             <Form.Group controlId="formDNI">
@@ -58,4 +57,4 @@ class Hello extends React.Component {
 }
 
  
-export default Hello;
+export default home;

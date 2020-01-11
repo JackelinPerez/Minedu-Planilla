@@ -1,5 +1,5 @@
 import {rulesBusinnnes} from './control';
-import {getDataObjectTable} from '../../functions/tableSearch';
+import {getDataObjectTable} from '../../functions/admin/tableSearch';
 import {sumRules} from './SumRules';
 
 export const cod_024 = (arrayRulesBasic, dataArrayP, codeP, dataP, dataArrayCC, valueUser, valueFcl) =>{

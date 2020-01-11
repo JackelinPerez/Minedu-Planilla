@@ -8,9 +8,9 @@ import {
 } from "react-router-dom";
 
 
-import Resultados from './components/tableResult';
-import Devengados from './components/accrued';
-import Hello from './components/home';
+import Resultados from './components/admin/tableResult';
+import Devengados from './components/admin/accrued';
+import Hello from './components/admin/home';
 
 class App extends React.Component {
   render() {

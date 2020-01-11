@@ -5,38 +5,32 @@ import PropTypes from 'prop-types';
 
 import { Preview, print } from 'react-html2pdf';
 
-// import {printPDF} from '../outPrint/control'
+import { NotifImProcedente} from '../../outPrint/admin/notificacion-improcedente';
+import { NotifProcedente} from '../../outPrint/admin/notificacion-procedente';
 
-import { PrintAdmin} from '../outPrint/admin/notificacion'
+import Background from '../../image/impresora.png';
+import '../../css/accrued-style.css'
+
+const resultPP = (objPP, objP, objInfoUser) =>{
+   return (parseFloat(objInfoUser["COD-049"]) === objP["COD-049"]) ? 
+   <NotifProcedente objPlanilla={objP} objDataUser={objInfoUser} tableView={objPP}></NotifProcedente> : 
+   <NotifImProcedente objPlanilla={objP} objDataUser={objInfoUser} tableView={objPP}></NotifImProcedente>;
+}
 
 class Devengados extends React.Component {
 
    render() {
-   const {objDiff}= this.props.location;
+   const {objDiff} = this.props.location;
    const {objPlanillaProject} = this.props.location;
    const {objInfoUser} = this.props.location;
    const {objTablePP} = this.props.location;
-
-   Object.keys(objDiff).forEach(element => {
-      console.log('Pension proyectada: ['+ element +']'+'= '+objDiff[element]);
-   });
-
      return (
       <div>
-      <style>
-        {`
-            #main-crued{
-                display: block;
-                text-align: center;
-                margin-left: auto;
-                margin-right: auto;
-            }
-        `}
-        </style>
          <Preview id={'out-admin'} >
-            <PrintAdmin objPlanilla={objPlanillaProject} objDataUser={objInfoUser} tableView={objTablePP}></PrintAdmin>
+            {resultPP(objTablePP, objPlanillaProject, objInfoUser)}
          </Preview>
-         <div id='main-crued'>         
+         <div className='main-crued'>
+         <img src={Background} alt="Logo" /><br/>
          <Button variant="outline-info" onClick={()=>print('pruebita', 'out-admin')}> Imprimir</Button><br/><br/>
          <Link to="/"><Button variant="outline-dark">Salir</Button></Link>         
          </div>    

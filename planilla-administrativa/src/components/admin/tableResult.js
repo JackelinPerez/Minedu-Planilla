@@ -7,16 +7,18 @@ import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
 import PropTypes from 'prop-types';
 
 /*data json */
-import dataPlanilla from '../data/Planilla.json';
-import dataCodPlanilla from '../data/Cod_Planilla.json';
-import dataCuadroComparativo from '../data/CuadroComparativo.json';
+import dataPlanilla from '../../data/Planilla.json';
+import dataCodPlanilla from '../../data/Cod_Planilla.json';
+import dataCuadroComparativo from '../../data/CuadroComparativo.json';
 
 /*conceptos totales de planilla */
-import {arrayAllRules, arrayAllRulesV} from '../businessRules/admin/globals';
-import { getAllConceptAdmin} from '../businessRules/constrolers';
+import {arrayAllRules, arrayAllRulesV} from '../../utils/admin/globals';
+import { getAllConceptAdmin} from '../../businessRules/constrolers';
 
 /*buscando planilla*/
-import {getFormtPlanilla, getObjectTable, ordenConceptPlanilla} from '../functions/tableSearch';
+import {getFormtPlanilla, getObjectTable, ordenConceptPlanilla} from '../../functions/admin/tableSearch';
+
+import '../../css/tableResult-style.css'
 
 const resultNotif = (key) =>{
    let result = {};
@@ -28,7 +30,7 @@ const resultNotif = (key) =>{
          break;
    
       default:
-         result.value = 'Se verifico que el calculo es INCORRECTO, se procedera a regularizar su pago ';
+         result.value = 'Se verifico que el calculo es INCORRECTO. Puede observarlo en cada concepto resaltado. Se procedera a regularizar su pago ';
          result.style = 'danger';
          break;
    }
@@ -63,6 +65,7 @@ export class Resultados extends React.Component {
   rowStyleFormat = (row, rowIdx) =>{
    return { 
       backgroundColor: this.userPlanilla[rowIdx].valuePlanilla !== this.userPlanilla[rowIdx].valueProject ? '#FFF700' : 'default',
+      // fontWeight: 'bold',
    };
   }
 
@@ -86,34 +89,22 @@ export class Resultados extends React.Component {
       console.log('['+element+']'+'= '+ objetResult[element]);
    });
      return (
-        <div id= 'bodydy'>
-            <style>
-            {`
-                  #bodydy{
-                     text-align: center;
-                     margin-left: auto;
-                     margin-right: auto;
-                     padding: 0% 5%;
-                  }
-            `}
-            </style>           
-            <Jumbotron>
-               <h1>¡Bienvenido, {userPlanillaObject['COD-007']}!</h1><br/>
-               <p><strong>DNI: </strong>{userPlanillaObject['COD-001']}</p>
-               <p><strong>Tiempo de servicio: </strong>{userPlanillaObject['COD-053']} años y {userPlanillaObject['COD-054']} meses</p>
-               <p><strong>Categoria: </strong>{userPlanillaObject['COD-055']}</p>
-            </Jumbotron>
-            <Row>
-               <Col>
-               <Alert variant="info">Recalculo de Pensión</Alert>
-               <BootstrapTable data={this.userPlanilla} id='table-result' trStyle={this.rowStyleFormat}>
-                  <TableHeaderColumn width='200' dataField='code' isKey>Descripcion</TableHeaderColumn>
-                  <TableHeaderColumn width='200' dataField='valuePlanilla'>Pension Actual</TableHeaderColumn>
-                  <TableHeaderColumn width='200' dataField='valueProject'>Pension Recalculada</TableHeaderColumn>
-               </BootstrapTable>
-               </Col>
-            </Row>
+        <div className="table-result">     
+               <section className = "header">
+                  <h1 className = "headerH">¡Bienvenido, {userPlanillaObject['COD-007']}!</h1><br/>
+                  <div className = "dataUser">
+                     <p><strong>DNI: </strong>{userPlanillaObject['COD-001']}</p>
+                     <p><strong>Tiempo de servicio: </strong>{userPlanillaObject['COD-053']} años y {userPlanillaObject['COD-054']} meses</p>
+                     <p><strong>Categoría: </strong>{userPlanillaObject['COD-055']}</p>
+                  </div>
+               </section>
+               <div className ="titleR">Recálculo de Pensión</div>
                <Alert variant={resultProyectada.style}>{resultProyectada.value}</Alert>
+               <BootstrapTable data={this.userPlanilla} id='table-result' trStyle={this.rowStyleFormat} variant="tableS">
+                  <TableHeaderColumn width='200' dataField='code' isKey>Descripción</TableHeaderColumn>
+                  <TableHeaderColumn width='200' dataField='valuePlanilla'>Pensión Actual</TableHeaderColumn>
+                  <TableHeaderColumn width='200' dataField='valueProject'>Pensión Recalculada</TableHeaderColumn>
+               </BootstrapTable>
          <Link 
             to={{
                pathname: "/devengados",
@@ -122,7 +113,7 @@ export class Resultados extends React.Component {
                objDiff: objetResult,
                objInfoUser: userPlanillaObject,
             }}>
-            <Button variant="outline-info">Emitir Notificación</Button>
+            <Button variant="outline-info" variant="boton">Emitir Notificación</Button>
          </Link>
         </div>
      )
