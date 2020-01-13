@@ -1,6 +1,10 @@
 .main-crued{
     display: block;
+    text-align: left;
+}
+
+.img-button{
+    display: block;
     text-align: center;
-    margin-left: auto;
-    margin-right: auto;    
+    margin: 5% 0%
 }

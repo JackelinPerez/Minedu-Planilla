@@ -84,10 +84,10 @@ export class Resultados extends React.Component {
    const objetResult = matchResult(arrayAllRulesV, userOrdenPlanillaV, userPlanillaObjectProjectVV);
    const resultProyectada = resultNotif(Object.keys(objetResult).length);
 
-   console.log('Hubo recalculo= '+ Object.keys(objetResult).length);
-   Object.keys(objetResult).forEach(element => {
-      console.log('['+element+']'+'= '+ objetResult[element]);
-   });
+   // console.log('Hubo recalculo= '+ Object.keys(objetResult).length);
+   // Object.keys(objetResult).forEach(element => {
+   //    console.log('['+element+']'+'= '+ objetResult[element]);
+   // });
      return (
         <div className="table-result">     
                <section className = "header">

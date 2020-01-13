@@ -13,8 +13,8 @@ import '../../css/accrued-style.css'
 
 const resultPP = (objPP, objP, objInfoUser) =>{
    return (parseFloat(objInfoUser["COD-049"]) === objP["COD-049"]) ? 
-   <NotifProcedente objPlanilla={objP} objDataUser={objInfoUser} tableView={objPP}></NotifProcedente> : 
-   <NotifImProcedente objPlanilla={objP} objDataUser={objInfoUser} tableView={objPP}></NotifImProcedente>;
+   <NotifImProcedente objPlanilla={objP} objDataUser={objInfoUser} tableView={objPP}></NotifImProcedente>:
+   <NotifProcedente objPlanilla={objP} objDataUser={objInfoUser} tableView={objPP}></NotifProcedente>;
 }
 
 class Devengados extends React.Component {
@@ -25,11 +25,11 @@ class Devengados extends React.Component {
    const {objInfoUser} = this.props.location;
    const {objTablePP} = this.props.location;
      return (
-      <div>
+      <div className='main-crued'>
          <Preview id={'out-admin'} >
             {resultPP(objTablePP, objPlanillaProject, objInfoUser)}
          </Preview>
-         <div className='main-crued'>
+         <div className= 'img-button'>
          <img src={Background} alt="Logo" /><br/>
          <Button variant="outline-info" onClick={()=>print('pruebita', 'out-admin')}> Imprimir</Button><br/><br/>
          <Link to="/"><Button variant="outline-dark">Salir</Button></Link>         

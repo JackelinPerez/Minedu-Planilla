@@ -1,5 +1,13 @@
-.not-improc{
-    margin: 10%;
-    text-align: left;
-    justify-content: left;
+.not-proc{
+    padding: 8%;
+}
+
+.divToPrint{
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.headerN{
+    text-align: center;
 }
